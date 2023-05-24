@@ -15,7 +15,8 @@ return new class extends Migration
             $table->uuid();
             $table->string('title');
             $table->text('description');
-            $table->dateTimeTz('finished_at');
+            $table->boolean('finished')->default(false);
+            $table->dateTimeTz('finished_at')->nullable();
             $table->timestamps();
         });
     }
