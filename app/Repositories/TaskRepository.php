@@ -3,9 +3,11 @@
 namespace App\Repositories;
 
 use App\DTO\CreateTaskDTO;
+use App\DTO\UpdateTaskDTO;
 use App\Repositories\Interfaces\TaskRepositoryInterface;
 use App\Services\Task\CreateTaskService;
 use App\Services\Task\ListTasksService;
+use App\Services\Task\UpdateTaskService;
 
 class TaskRepository implements TaskRepositoryInterface
 {
@@ -22,16 +24,20 @@ class TaskRepository implements TaskRepositoryInterface
 
     public function createTask(CreateTaskDTO $params): CreateTaskDTO|array
     {
-        $createTask = new CreateTaskService($params);
+        $createTaskService = new CreateTaskService($params);
         
-        $this->statusCode = $createTask->getStatusCode();
+        $this->statusCode = $createTaskService->getStatusCode();
         
-        return $createTask->execute();
+        return $createTaskService->execute();
     }
 
-    public function updateTask()
+    public function updateTask(array $params, $uuid): UpdateTaskDTO|array
     {
-        return [];
+        $updateTaskService = new UpdateTaskService($params, $uuid);
+        
+        $this->statusCode = $updateTaskService->getStatusCode();
+        
+        return $updateTaskService->execute();
     }
 
     public function deleteTask()
