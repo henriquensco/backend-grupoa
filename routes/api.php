@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\TaskController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,13 +17,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+/* Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+}); */
+
+Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
+    $router->post('login', [AuthController::class, 'login']);
+    $router->post('logout', [AuthController::class, 'logout']);
+    $router->post('refresh', [AuthController::class, 'refresh']);
+    $router->post('me', [AuthController::class, 'me']);
 });
 
-Route::prefix('tasks')->group(function ($route) {
-    $route->get('/', [TaskController::class, 'listTasks']);
-    $route->post('/create', [TaskController::class, 'createTask']);
-    $route->put('/update', [TaskController::class, 'updateTask']);
-    $route->delete('/delete', [TaskController::class, 'deleteTask']);
+Route::prefix('tasks')->group(function ($router) {
+    $router->get('/', [TaskController::class, 'listTasks']);
+    $router->post('/create', [TaskController::class, 'createTask']);
+    $router->put('/update', [TaskController::class, 'updateTask']);
+    $router->delete('/delete', [TaskController::class, 'deleteTask']);
 });
