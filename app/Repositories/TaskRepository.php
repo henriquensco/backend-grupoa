@@ -6,6 +6,7 @@ use App\DTO\CreateTaskDTO;
 use App\DTO\UpdateTaskDTO;
 use App\Repositories\Interfaces\TaskRepositoryInterface;
 use App\Services\Task\CreateTaskService;
+use App\Services\Task\DeleteTaskService;
 use App\Services\Task\ListTasksService;
 use App\Services\Task\UpdateTaskService;
 
@@ -40,9 +41,13 @@ class TaskRepository implements TaskRepositoryInterface
         return $updateTaskService->execute();
     }
 
-    public function deleteTask()
+    public function deleteTask(string $uuid): array
     {
-        return [];
+        $deleteTaskService = new DeleteTaskService($uuid);
+        
+        $this->statusCode = $deleteTaskService->getStatusCode(); 
+        
+        return $deleteTaskService->execute();
     }
 
     public function getStatusCode(): int

@@ -44,8 +44,11 @@ class TaskController extends Controller
         );
     }
 
-    public function deleteTask()
+    public function deleteTask(string $uuid)
     {
-        return $this->taskRepository->deleteTask();
+        return response()->json(
+            $this->taskRepository->deleteTask($uuid),
+            $this->taskRepository->getStatusCode()
+        );
     }
 }
