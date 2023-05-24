@@ -5,14 +5,19 @@ namespace App\Repositories;
 use App\DTO\CreateTaskDTO;
 use App\Repositories\Interfaces\TaskRepositoryInterface;
 use App\Services\Task\CreateTaskService;
+use App\Services\Task\ListTasksService;
 
 class TaskRepository implements TaskRepositoryInterface
 {
-    private $statusCode = 401;
+    private $statusCode = 200;
 
-    public function listTasks()
+    public function listTasks(): array
     {
-        return [];
+        $listTasksService = new ListTasksService();
+
+        $this->statusCode = $listTasksService->getStatusCode();
+
+        return $listTasksService->execute();
     }
 
     public function createTask(CreateTaskDTO $params): CreateTaskDTO|array

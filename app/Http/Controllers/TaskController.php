@@ -7,7 +7,7 @@ use App\Repositories\TaskRepository;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
-{    
+{
     public function __construct(private TaskRepository $taskRepository)
     {
         $this->middleware('auth:api');
@@ -15,18 +15,24 @@ class TaskController extends Controller
 
     public function listTasks()
     {
-        return $this->taskRepository->listTasks();
+        return response()->json(
+            $this->taskRepository->listTasks(),
+            $this->taskRepository->getStatusCode()
+        );
     }
 
     public function createTask(Request $request)
-    {   
+    {
         $dto = new CreateTaskDTO($request->all());
 
         if (!$dto) {
             return $dto->getError();
         }
 
-        return response()->json($this->taskRepository->createTask($dto), $this->taskRepository->getStatusCode());
+        return response()->json(
+            $this->taskRepository->createTask($dto),
+            $this->taskRepository->getStatusCode()
+        );
     }
 
     public function updateTask()
