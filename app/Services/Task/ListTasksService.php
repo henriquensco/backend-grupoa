@@ -2,6 +2,7 @@
 
 namespace App\Services\Task;
 
+use App\Models\Task;
 use App\Services\Interfaces\AbstractInterface;
 
 class ListTasksService implements AbstractInterface
@@ -15,7 +16,9 @@ class ListTasksService implements AbstractInterface
 
     public function execute()
     {
-        return ['data' => []];
+        $listAllTasks = Task::all();
+
+        return $listAllTasks->toArray();
     }
 
     public function getStatusCode(): int
