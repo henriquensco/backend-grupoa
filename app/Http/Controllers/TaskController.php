@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\DTO\CreateTaskDTO;
 use App\Repositories\TaskRepository;
+use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
@@ -16,9 +18,15 @@ class TaskController extends Controller
         return $this->taskRepository->listTasks();
     }
 
-    public function createTask()
-    {
-        return $this->taskRepository->createTask();
+    public function createTask(Request $request)
+    {   
+        $dto = new CreateTaskDTO($request->all());
+
+        if (!$dto) {
+            return $dto->getError();
+        }
+
+        return response()->json($this->taskRepository->createTask($dto), 201);
     }
 
     public function updateTask()
