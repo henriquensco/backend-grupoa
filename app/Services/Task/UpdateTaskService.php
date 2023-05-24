@@ -7,7 +7,7 @@ use App\Services\Interfaces\AbstractInterface;
 
 class UpdateTaskService implements AbstractInterface
 {
-    private $data;
+    private array $data;
     private string $uuid;
     
     private $statusCode = 200;
