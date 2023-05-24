@@ -2,10 +2,10 @@
 
 namespace App\Services\Task;
 
-use App\Services\Interfaces\CreateTaskServiceInterface;
+use App\Services\Interfaces\AbstractInterface;
 use App\DTO\CreateTaskDTO;
 
-class CreateTaskService implements CreateTaskServiceInterface
+class CreateTaskService implements AbstractInterface
 {
     private CreateTaskDTO $data;
     
