@@ -30,8 +30,7 @@ class CreateTaskService implements AbstractInterface
 
             return $this->data;
         } catch (Exception $error) {
-            //var_dump($error);
-            return ['message' => $error];
+            return [$error];
         }
     }
 
