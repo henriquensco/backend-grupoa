@@ -10,7 +10,7 @@ class UpdateTaskService implements AbstractInterface
     private array $data;
     private string $uuid;
     
-    private $statusCode = 200;
+    private int $statusCode = 200;
 
     public function __construct(array $data, string $uuid)
     {

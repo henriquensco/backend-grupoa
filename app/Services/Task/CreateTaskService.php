@@ -9,7 +9,7 @@ class CreateTaskService implements AbstractInterface
 {
     private CreateTaskDTO $data;
 
-    private $statusCode = 201;
+    private int $statusCode = 201;
     
     public function __construct(CreateTaskDTO $data)
     {

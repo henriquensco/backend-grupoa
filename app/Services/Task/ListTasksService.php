@@ -6,7 +6,7 @@ use App\Services\Interfaces\AbstractInterface;
 
 class ListTasksService implements AbstractInterface
 {
-    private $statusCode = 200;
+    private int $statusCode = 200;
 
     public function __construct()
     {

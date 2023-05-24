@@ -6,7 +6,7 @@ use App\Services\Interfaces\AbstractInterface;
 
 class DeleteTaskService implements AbstractInterface
 {
-    private $statusCode = 200;
+    private int $statusCode = 200;
 
     private string $uuid;
 
