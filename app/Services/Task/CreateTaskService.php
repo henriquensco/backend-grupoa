@@ -8,6 +8,8 @@ use App\DTO\CreateTaskDTO;
 class CreateTaskService implements AbstractInterface
 {
     private CreateTaskDTO $data;
+
+    private $statusCode = 201;
     
     public function __construct(CreateTaskDTO $data)
     {
@@ -17,5 +19,10 @@ class CreateTaskService implements AbstractInterface
     public function execute()
     {
         return $this->data;
+    }
+
+    public function getStatusCode(): int
+    {
+        return $this->statusCode;
     }
 }

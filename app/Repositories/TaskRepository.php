@@ -8,6 +8,8 @@ use App\Services\Task\CreateTaskService;
 
 class TaskRepository implements TaskRepositoryInterface
 {
+    private $statusCode = 401;
+
     public function listTasks()
     {
         return [];
@@ -16,6 +18,9 @@ class TaskRepository implements TaskRepositoryInterface
     public function createTask(CreateTaskDTO $params): CreateTaskDTO|array
     {
         $createTask = new CreateTaskService($params);
+        
+        $this->statusCode = $createTask->getStatusCode();
+        
         return $createTask->execute();
     }
 
@@ -27,5 +32,10 @@ class TaskRepository implements TaskRepositoryInterface
     public function deleteTask()
     {
         return [];
+    }
+
+    public function getStatusCode(): int
+    {
+        return $this->statusCode;
     }
 }
