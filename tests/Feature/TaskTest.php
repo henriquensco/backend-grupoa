@@ -6,7 +6,8 @@ use Tests\TestCase;
 
 class TaskTest extends TestCase
 {
-    private $token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojg5ODkvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODUwMjYxODQsImV4cCI6MTY4NTAzMzM4NCwibmJmIjoxNjg1MDI2MTg0LCJqdGkiOiJGTVNHRTdkNVk5N3IxOW96Iiwic3ViIjoiOTkzZjQ5ZDAtM2E5Yi00NmRkLTg4MGYtMjM1MDNhY2RlYjlhIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Rb4GOr-MzElQIwcwoqgER7762QccGaPhMkRE4pRq0Ro';
+    private $token = '';
+    private $uuid = '';
 
     public function test_access_route_api(): void
     {
@@ -36,14 +37,20 @@ class TaskTest extends TestCase
 
     public function test_update_task(): void
     {
-        $uuid = '9940afdf-c585-468b-b7ba-a660224a1afe';
-
         $body = [
             'title' => '123',
-            'description' => 'teste'
+            'description' => 'teste',
+            'finished' => true
         ];
 
-        $response = $this->response('PUT', '/api/tasks/update/'.$uuid, $body);
+        $response = $this->response('PUT', '/api/tasks/update/'.$this->uuid, $body);
+
+        $response->assertStatus(200);
+    }
+
+    public function test_delete_task(): void
+    {
+        $response = $this->response('DELETE', '/api/tasks/delete/'.$this->uuid);
 
         $response->assertStatus(200);
     }
