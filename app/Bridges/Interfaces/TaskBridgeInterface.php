@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Repositories\Interfaces;
+namespace App\Bridges\Interfaces;
 
 use App\DTO\CreateTaskDTO;
 use App\DTO\UpdateTaskDTO;
 
-interface TaskRepositoryInterface
+interface TaskBridgeInterface
 {
     public function listTasks(): array;
     public function getTaskByUuid(string $uuid): array;

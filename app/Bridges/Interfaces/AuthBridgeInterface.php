@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Repositories\Interfaces;
+namespace App\Bridges\Interfaces;
 
 use App\DTO\LoginDTO;
 use App\DTO\RegisterDTO;
 
-interface AuthRepositoryInterface
+interface AuthBridgeInterface
 {
     public function login(LoginDTO $data): LoginDTO | array;
     public function register(RegisterDTO $data): RegisterDTO | array;

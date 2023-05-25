@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Bridges;
 
+use App\Bridges\Interfaces\AuthBridgeInterface;
 use App\DTO\LoginDTO;
 use App\DTO\RegisterDTO;
-use App\Repositories\Interfaces\AuthRepositoryInterface;
 use App\Services\Auth\LoginService;
 use App\Services\Auth\LogoutService;
 use App\Services\Auth\ProfileService;
 use App\Services\Auth\RegisterService;
 
-class AuthRepository implements AuthRepositoryInterface
+class AuthBridge implements AuthBridgeInterface
 {
     public function login(LoginDTO $data): LoginDTO | array
     {

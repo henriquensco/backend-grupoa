@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\DTO\LoginDTO;
 use App\DTO\RegisterDTO;
-use App\Repositories\AuthRepository;
+use App\Bridges\AuthBridge;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\JWTAuth;
 
 class AuthController extends Controller
 {
-    public function __construct(private AuthRepository $authRepository)
+    public function __construct(private AuthBridge $authBridge)
     {
         $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
@@ -23,7 +23,7 @@ class AuthController extends Controller
             return $loginDto->getError();
         }
 
-        return response()->json($this->authRepository->login($loginDto), 200);
+        return response()->json($this->authBridge->login($loginDto), 200);
     }
 
     public function register(Request $request)
@@ -34,16 +34,16 @@ class AuthController extends Controller
             return $registerDto->getError();
         }
 
-        return response()->json($this->authRepository->register($registerDto), 201);
+        return response()->json($this->authBridge->register($registerDto), 201);
     }
 
     public function me()
     {
-        return response()->json($this->authRepository->me(), 200);
+        return response()->json($this->authBridge->me(), 200);
     }
 
     public function logout()
     {
-        return response()->json($this->authRepository->logout(), 200);
+        return response()->json($this->authBridge->logout(), 200);
     }
 }
