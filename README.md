@@ -13,7 +13,7 @@ git clone git@github.com:henriquensco/backend-grupoa.git
 Em seguida, acesse a pasta do projeto:
 
 ```bash
-cd backend-grupoa
+ cd backend-grupoa
 ```
 
 ## Executando o container Docker
