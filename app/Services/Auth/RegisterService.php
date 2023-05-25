@@ -3,41 +3,32 @@
 namespace App\Services\Auth;
 
 use App\DTO\RegisterDTO;
-use App\Models\User;
+use App\Repositories\UserRepository;
 use App\Services\Interfaces\AbstractInterface;
-use Symfony\Component\HttpKernel\Exception\HttpException;
-use Illuminate\Support\Str;
 
 class RegisterService implements AbstractInterface
 {
     private RegisterDTO $data;
+    private UserRepository $userRepository;
 
     public function __construct(RegisterDTO $data)
     {
-        $this->data = $data;    
+        $this->data = $data;
+        $this->userRepository = new UserRepository();
     }
 
     public function execute()
     {
         try {
-            $user = new User;
+            $user = $this->userRepository->create((array)$this->data);
 
-            if ($user->find(['email' => $this->data->email])) {
-                throw new HttpException(401, 'Please, verify email and try again.'); 
+            if (!$user) {
+                return ['message' => 'Occurred a error while create user.', 'statusCode' => 401];
             }
 
-            $user->name = $this->data->name;
-            $user->email = $this->data->email;
-            $user->password = $this->data->password;
-            $user->remember_token = Str::random(10);
-        
-            if (!$user->save()) {
-                throw new HttpException(401, 'Occurred a error while create user.');
-            }
-
-            return $user->toArray();
-        } catch (HttpException $error) {
-            throw new HttpException($error->getStatusCode(), $error->getMessage());
+            return ['data' => $this->data, 'statusCode' => 201];
+        } catch (\Exception $error) {
+            return ['message' => $error->getMessage(), 'statusCode' => 500];
         }
     }
 }

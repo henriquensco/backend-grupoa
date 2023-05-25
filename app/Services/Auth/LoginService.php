@@ -4,7 +4,6 @@ namespace App\Services\Auth;
 
 use App\DTO\LoginDTO;
 use App\Services\Interfaces\AbstractInterface;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class LoginService implements AbstractInterface
 {
@@ -24,12 +23,12 @@ class LoginService implements AbstractInterface
             ]);
 
             if (!$token) {
-                throw new HttpException(401, 'unauthorized');
+                return ['message' => 'unauthorized', 'statusCode' => 401];
             }
 
             return $this->respondWithToken($token);
-        } catch (HttpException $error) {
-            throw new HttpException($error->getStatusCode(), $error->getMessage());
+        } catch (\Exception $error) {
+            return ['message' => $error->getMessage(), 'statusCode' => 401];
         }
     }
 

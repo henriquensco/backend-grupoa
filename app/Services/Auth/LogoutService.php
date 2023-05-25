@@ -8,13 +8,12 @@ class LogoutService implements AbstractInterface
 {
     public function __construct()
     {
-        
     }
 
     public function execute(): array
     {
         auth()->logout();
 
-        return ['message' => 'Successfully logged out'];
+        return ['message' => 'Successfully logged out', 'statusCode' => 200];
     }
 }

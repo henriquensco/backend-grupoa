@@ -2,33 +2,32 @@
 
 namespace App\Services\Task;
 
-use App\Models\Task;
+use App\Repositories\TaskRepository;
 use App\Services\Interfaces\AbstractInterface;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class DeleteTaskService implements AbstractInterface
 {
     private string $uuid;
+    private TaskRepository $taskRepository;
 
     public function __construct(string $uuid)
     {
         $this->uuid = $uuid;
+        $this->taskRepository = new TaskRepository();
     }
 
     public function execute(): array
     {
         try {
-            $task = Task::find($this->uuid);
+            $task = $this->taskRepository->deleteTask($this->uuid);
 
             if (!$task) {
-                throw new HttpException(404, 'The task was not found.');
+                return ['message' => 'The task was not found.', 'statusCode' => 404];
             }
-            
-            $task->delete();
 
             return ['message' => 'Task deleted'];
-        } catch (HttpException $error) {
-            throw new HttpException($error->getStatusCode(), $error->getMessage());
+        } catch (\Exception $error) {
+            return ['message' => $error->getMessage(), 'statusCode' => 500];
         }
     }
 }

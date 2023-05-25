@@ -4,31 +4,31 @@ namespace App\Services\Task;
 
 use App\Services\Interfaces\AbstractInterface;
 use App\DTO\CreateTaskDTO;
-use App\Models\Task;
-use Symfony\Component\HttpKernel\Exception\HttpException;
+use App\Repositories\TaskRepository;
 
 class CreateTaskService implements AbstractInterface
 {
     private CreateTaskDTO $data;
+    private TaskRepository $taskRepository;
 
     public function __construct(CreateTaskDTO $data)
     {
         $this->data = $data;
+        $this->taskRepository = new TaskRepository();
     }
 
     public function execute(): CreateTaskDTO|array
     {
         try {
-            $task = new Task;
+            $createTask = $this->taskRepository->createTask((array)$this->data);
 
-            $task->title = $this->data->title;
-            $task->description = $this->data->description;
+            if (!$createTask) {
+                return ['message' => 'Occurred a error when create the task', 'statusCode' => 401];
+            }
 
-            $task->save();
-
-            return $this->data;
-        } catch (HttpException $error) {
-            throw new HttpException($error->getStatusCode(), $error->getMessage());
+            return ['data' => $this->data, 'statusCode' => 201];
+        } catch (\Exception $error) {
+            return ['message' => $error->getMessage(), 'statusCode' => 500];
         }
     }
 }
