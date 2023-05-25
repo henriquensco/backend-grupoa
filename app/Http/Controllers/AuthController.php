@@ -2,46 +2,48 @@
 
 namespace App\Http\Controllers;
 
+use App\DTO\LoginDTO;
+use App\DTO\RegisterDTO;
+use App\Repositories\AuthRepository;
+use Illuminate\Http\Request;
 use Tymon\JWTAuth\JWTAuth;
 
 class AuthController extends Controller
 {
-    public function __construct()
+    public function __construct(private AuthRepository $authRepository)
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
 
-    public function login()
+    public function login(Request $request)
     {
-        $credentials = request(['email', 'password']);
+        $loginDto = new LoginDTO($request);
 
-        $token = auth()->attempt($credentials);
-
-        if (!$token) {
-            return response()->json(['error' => 'unauthorized'], 401);
+        if (!$loginDto) {
+            return $loginDto->getError();
         }
 
-        return $this->respondWithToken($token);
+        return response()->json($this->authRepository->login($loginDto), 200);
+    }
+
+    public function register(Request $request)
+    {
+        $registerDto = new RegisterDTO($request);
+
+        if (!$registerDto) {
+            return $registerDto->getError();
+        }
+
+        return response()->json($this->authRepository->register($registerDto), 201);
     }
 
     public function me()
     {
-        return response()->json(auth()->user());
+        return response()->json($this->authRepository->me(), 200);
     }
 
     public function logout()
     {
-        auth()->logout();
-
-        return response()->json(['message' => 'Successfully logged out']);
-    }
-
-    private function respondWithToken(String $token)
-    {
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => env('JWT_TTL', 60) / 60 . " Hours"
-        ]);
+        return response()->json($this->authRepository->logout(), 200);
     }
 }
