@@ -2,8 +2,6 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class TaskTest extends TestCase
@@ -17,13 +15,9 @@ class TaskTest extends TestCase
         $response->assertStatus(404);
     }
 
-    public function teste_list_tasks(): void
+    public function test_list_tasks(): void
     {
-        $response = $this->call('GET', '/api/tasks', [], [], [], [
-            'HTTP_AUTHORIZATION' => 'Bearer ' . $this->token,
-            'CONTENT_TYPE' => 'application/json',
-            'HTTP_ACCEPT' => 'application/json'
-        ]);
+        $response = $this->response('GET', '/api/tasks');
 
         $response->assertStatus(200);
     }
@@ -35,12 +29,31 @@ class TaskTest extends TestCase
             'description' => 'teste'
         ];
 
-        $response = $this->call('POST', '/api/tasks/create', [], [], [], [
+        $response = $this->response('POST', '/api/tasks/create', $body);
+
+        $response->assertStatus(201);
+    }
+
+    public function test_update_task(): void
+    {
+        $uuid = '9940afdf-c585-468b-b7ba-a660224a1afe';
+
+        $body = [
+            'title' => '123',
+            'description' => 'teste'
+        ];
+
+        $response = $this->response('PUT', '/api/tasks/update/'.$uuid, $body);
+
+        $response->assertStatus(200);
+    }
+
+    protected function response($method = 'GET', $uri, $body = null)
+    {
+        return $this->call($method, $uri, [], [], [], [
             'HTTP_AUTHORIZATION' => 'Bearer ' . $this->token,
             'CONTENT_TYPE' => 'application/json',
             'HTTP_ACCEPT' => 'application/json'
         ], json_encode($body));
-
-        $response->assertStatus(201);
     }
 }
