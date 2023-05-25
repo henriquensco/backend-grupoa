@@ -15,7 +15,7 @@ class ListTasksService implements AbstractInterface
     public function execute(): array
     {
         try {
-            $listAllTasks = Task::all();
+            $listAllTasks = Task::orderBy('created_at', 'DESC')->get();
 
             $listAllTasks->map(function ($data) {
                 $data->finished = $data->finished == 0 ? false : true;
