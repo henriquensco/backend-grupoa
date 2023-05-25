@@ -11,12 +11,15 @@ class ListTasksService implements AbstractInterface
 
     public function __construct()
     {
-        
     }
 
     public function execute()
     {
         $listAllTasks = Task::all();
+
+        $listAllTasks->map(function ($data) {
+            $data->finished = $data->finished == 0 ? false : true;
+        });
 
         return $listAllTasks->toArray();
     }
