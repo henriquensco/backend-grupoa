@@ -16,10 +16,7 @@ class TaskController extends Controller
 
     public function listTasks()
     {
-        return response()->json(
-            $this->taskRepository->listTasks(),
-            $this->taskRepository->getStatusCode()
-        );
+        return response()->json($this->taskRepository->listTasks());
     }
 
     public function createTask(Request $request)
@@ -30,25 +27,16 @@ class TaskController extends Controller
             return $dto->getError();
         }
 
-        return response()->json(
-            $this->taskRepository->createTask($dto),
-            $this->taskRepository->getStatusCode()
-        );
+        return response()->json($this->taskRepository->createTask($dto));
     }
 
     public function updateTask(Request $request, string $uuid)
     {
-        return response()->json(
-            $this->taskRepository->updateTask($request->all(), $uuid),
-            $this->taskRepository->getStatusCode()
-        );
+        return response()->json($this->taskRepository->updateTask($request->all(), $uuid));
     }
 
     public function deleteTask(string $uuid)
     {
-        return response()->json(
-            $this->taskRepository->deleteTask($uuid),
-            $this->taskRepository->getStatusCode()
-        );
+        return response()->json($this->taskRepository->deleteTask($uuid));
     }
 }

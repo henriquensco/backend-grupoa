@@ -5,13 +5,11 @@ namespace App\Services\Task;
 use App\Services\Interfaces\AbstractInterface;
 use App\DTO\CreateTaskDTO;
 use App\Models\Task;
-use Exception;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class CreateTaskService implements AbstractInterface
 {
     private CreateTaskDTO $data;
-
-    private int $statusCode = 201;
 
     public function __construct(CreateTaskDTO $data)
     {
@@ -29,13 +27,8 @@ class CreateTaskService implements AbstractInterface
             $task->save();
 
             return $this->data;
-        } catch (Exception $error) {
-            return [$error];
+        } catch (HttpException $error) {
+            throw new HttpException($error->getStatusCode(), $error->getMessage());
         }
-    }
-
-    public function getStatusCode(): int
-    {
-        return $this->statusCode;
     }
 }

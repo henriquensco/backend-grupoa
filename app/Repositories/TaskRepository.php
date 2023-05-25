@@ -12,13 +12,9 @@ use App\Services\Task\UpdateTaskService;
 
 class TaskRepository implements TaskRepositoryInterface
 {
-    private $statusCode = 200;
-
     public function listTasks(): array
     {
         $listTasksService = new ListTasksService();
-
-        $this->statusCode = $listTasksService->getStatusCode();
 
         return $listTasksService->execute();
     }
@@ -26,17 +22,13 @@ class TaskRepository implements TaskRepositoryInterface
     public function createTask(CreateTaskDTO $params): CreateTaskDTO|array
     {
         $createTaskService = new CreateTaskService($params);
-        
-        $this->statusCode = $createTaskService->getStatusCode();
-        
+                
         return $createTaskService->execute();
     }
 
     public function updateTask(array $params, string $uuid): UpdateTaskDTO|array
     {
         $updateTaskService = new UpdateTaskService($params, $uuid);
-        
-        $this->statusCode = $updateTaskService->getStatusCode();
         
         return $updateTaskService->execute();
     }
@@ -45,13 +37,7 @@ class TaskRepository implements TaskRepositoryInterface
     {
         $deleteTaskService = new DeleteTaskService($uuid);
         
-        $this->statusCode = $deleteTaskService->getStatusCode(); 
-        
         return $deleteTaskService->execute();
     }
 
-    public function getStatusCode(): int
-    {
-        return $this->statusCode;
-    }
 }
