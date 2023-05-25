@@ -23,6 +23,13 @@ class TaskTest extends TestCase
         $response->assertStatus(200);
     }
 
+    public function test_get_task_by_uuid(): void
+    {
+        $response = $this->response('GET', '/api/tasks/' . $this->uuid);
+
+        $response->assertStatus(200);
+    }
+
     public function test_create_task(): void
     {
         $body = [
@@ -43,14 +50,14 @@ class TaskTest extends TestCase
             'finished' => true
         ];
 
-        $response = $this->response('PUT', '/api/tasks/update/'.$this->uuid, $body);
+        $response = $this->response('PUT', '/api/tasks/update/' . $this->uuid, $body);
 
         $response->assertStatus(200);
     }
 
     public function test_delete_task(): void
     {
-        $response = $this->response('DELETE', '/api/tasks/delete/'.$this->uuid);
+        $response = $this->response('DELETE', '/api/tasks/delete/' . $this->uuid);
 
         $response->assertStatus(200);
     }
