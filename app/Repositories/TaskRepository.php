@@ -32,7 +32,7 @@ class TaskRepository implements TaskRepositoryInterface
         return $createTaskService->execute();
     }
 
-    public function updateTask(array $params, $uuid): UpdateTaskDTO|array
+    public function updateTask(array $params, string $uuid): UpdateTaskDTO|array
     {
         $updateTaskService = new UpdateTaskService($params, $uuid);
         
