@@ -16,7 +16,7 @@ class CreateTaskService implements AbstractInterface
         $this->data = $data;
     }
 
-    public function execute()
+    public function execute(): CreateTaskDTO|array
     {
         try {
             $task = new Task;

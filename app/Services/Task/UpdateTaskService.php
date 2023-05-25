@@ -6,7 +6,6 @@ use App\DTO\UpdateTaskDTO;
 use App\Models\Task;
 use App\Services\Interfaces\AbstractInterface;
 use DateTime;
-use Exception;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class UpdateTaskService implements AbstractInterface
@@ -20,7 +19,7 @@ class UpdateTaskService implements AbstractInterface
         $this->uuid = $uuid;
     }
 
-    public function execute()
+    public function execute(): array
     {
         try {
             if ($this->data['finished']) {

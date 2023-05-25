@@ -12,7 +12,7 @@ class ListTasksService implements AbstractInterface
     {
     }
 
-    public function execute()
+    public function execute(): array
     {
         try {
             $listAllTasks = Task::all();
