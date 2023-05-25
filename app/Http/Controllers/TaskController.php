@@ -27,7 +27,7 @@ class TaskController extends Controller
             return $dto->getError();
         }
 
-        return response()->json($this->taskRepository->createTask($dto));
+        return response()->json($this->taskRepository->createTask($dto), 201);
     }
 
     public function updateTask(Request $request, string $uuid)
