@@ -22,7 +22,7 @@ class UpdateTaskService implements AbstractInterface
     public function execute(): array
     {
         try {
-            if ($this->data['finished']) {
+            if (isset($this->data['finished'])) {
                 $this->data['finished_at'] = new DateTime();
             } else {
                 $this->data['finished_at'] = null;
