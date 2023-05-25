@@ -19,6 +19,11 @@ class TaskController extends Controller
         return response()->json($this->taskRepository->listTasks());
     }
 
+    public function getTaskByUuid(string $uuid)
+    {
+        return response()->json($this->taskRepository->getTaskByUuid($uuid), 200); 
+    }
+
     public function createTask(Request $request)
     {
         $dto = new CreateTaskDTO($request->all());

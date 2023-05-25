@@ -7,6 +7,7 @@ use App\DTO\UpdateTaskDTO;
 use App\Repositories\Interfaces\TaskRepositoryInterface;
 use App\Services\Task\CreateTaskService;
 use App\Services\Task\DeleteTaskService;
+use App\Services\Task\GetTaskService;
 use App\Services\Task\ListTasksService;
 use App\Services\Task\UpdateTaskService;
 
@@ -17,6 +18,13 @@ class TaskRepository implements TaskRepositoryInterface
         $listTasksService = new ListTasksService();
 
         return $listTasksService->execute();
+    }
+
+    public function getTaskByUuid(string $uuid): array
+    {
+        $getTaskService = new GetTaskService($uuid);
+
+        return $getTaskService->execute();
     }
 
     public function createTask(CreateTaskDTO $params): CreateTaskDTO|array

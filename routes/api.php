@@ -25,6 +25,7 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
 
 Route::group(['middleware' => 'api', 'prefix' => 'tasks'], function ($router) {
     $router->get('/', [TaskController::class, 'listTasks']);
+    $router->get('/{uuid}', [TaskController::class, 'getTaskByUuid']);
     $router->post('/create', [TaskController::class, 'createTask']);
     $router->put('/update/{uuid}', [TaskController::class, 'updateTask']);
     $router->delete('/delete/{uuid}', [TaskController::class, 'deleteTask']);
