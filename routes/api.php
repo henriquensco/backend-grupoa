@@ -17,14 +17,9 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-/* Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-}); */
-
 Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
     $router->post('login', [AuthController::class, 'login']);
     $router->post('logout', [AuthController::class, 'logout']);
-    $router->post('refresh', [AuthController::class, 'refresh']);
     $router->post('me', [AuthController::class, 'me']);
 });
 
