@@ -25,8 +25,8 @@ class CreateTaskDTO
             'title' => $this->title,
             'description' => $this->description
         ], [
-            'title' => 'required',
-            'description' => 'required'
+            'title' => 'required|string',
+            'description' => 'required|string'
         ]);
 
         if (!$validation->validate()) {
