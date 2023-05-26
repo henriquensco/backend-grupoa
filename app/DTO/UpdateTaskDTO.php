@@ -13,8 +13,7 @@ class UpdateTaskDTO
 
     public function __construct($request)
     {
-        $this->title = $request['title'] ?? '';
-        
+        $this->title = $request['title'] ?? null;
         $this->description = $request['description'] ?? null;
 
         $this->validate();
