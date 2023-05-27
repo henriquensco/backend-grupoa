@@ -1,0 +1,290 @@
+_type: export
+__export_format: 4
+__export_date: 2023-05-27T16:43:15.149Z
+__export_source: insomnia.desktop.app:v2023.2.2
+resources:
+  - _id: req_74c74a412bf047018ec5af94cf8ab262
+    parentId: wrk_5c880ebb277a48809dad40ff3243aa64
+    modified: 1685150964765
+    created: 1684935102325
+    url: http://127.0.0.1:8989/api/auth/login
+    name: Authenticate
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "zabbott@example.net",
+        	"password": "password"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_1ea23741aacf43c3b7ba21ca7317eb91
+      - id: pair_70fff9519a7f496599993281f0a1a777
+        name: Accept
+        value: application/json
+        description: ""
+    authentication:
+      type: bearer
+      token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojg5ODkvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODUwNTc1NTEsImV4cCI6MTY4NTA2NDc1MSwibmJmIjoxNjg1MDU3NTUxLCJqdGkiOiJqRVlxVmtGRElieWtyMEgwIiwic3ViIjoiOTk0MTIzODEtNTIyMi00NmI2LWI5NWYtODg3N2I5ZjJmMGYzIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.rsFFsKP0Mo7id1oLWSsSzjlSkCCo51UjSgfiMGUlr4Q
+      disabled: true
+    metaSortKey: -1684935102325
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_5c880ebb277a48809dad40ff3243aa64
+    parentId: null
+    modified: 1684935099233
+    created: 1684935099233
+    name: My Collectionpess
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_ad10eb76c05f46ae8ec274fc88cd5e77
+    parentId: wrk_5c880ebb277a48809dad40ff3243aa64
+    modified: 1685056778337
+    created: 1685049907322
+    url: http://localhost:8989/api/auth/register
+    name: Register User
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "henrique",
+        	"email": "zabbott5@example.net",
+        	"password": "password"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_1ea23741aacf43c3b7ba21ca7317eb91
+      - id: pair_70fff9519a7f496599993281f0a1a777
+        name: Accept
+        value: application/json
+        description: ""
+    authentication: {}
+    metaSortKey: -1684905520655.125
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_bfc6cfc15b724321a16d4b7d0dacf128
+    parentId: wrk_5c880ebb277a48809dad40ff3243aa64
+    modified: 1685199911114
+    created: 1684957273370
+    url: http://localhost:8989/api/tasks/create
+    name: Create Task
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"title": "hncc",
+        	"description": "description"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_f7a6afd4fcc64f50b1abe4b326078021
+      - id: pair_8be1cdfb58074f89bb96214dfde90fb0
+        name: Accept
+        value: "application/json "
+        description: ""
+    authentication:
+      type: bearer
+      token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjg5ODkvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODUxOTQ1ODYsImV4cCI6MTY4NTIwMTc4NiwibmJmIjoxNjg1MTk0NTg2LCJqdGkiOiJEelRvT0ptSFl3dVZkblIyIiwic3ViIjoiOTkzZjQ5ZDAtM2E5Yi00NmRkLTg4MGYtMjM1MDNhY2RlYjlhIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.OH-TB6Egn-CIwEQMTNgcADWpwYxI6k3UTT_fpMt9MLY
+    metaSortKey: -1684875938985.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_39b72b55f822475aa892ae0a21db830d
+    parentId: wrk_5c880ebb277a48809dad40ff3243aa64
+    modified: 1685057784502
+    created: 1684965036383
+    url: http://localhost:8989/api/tasks/update/9940b616-81a6-4115-be65-ed580b040e902
+    name: Update Task
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"title": "Task",
+        	"description": "Description task",
+        	"finished": false
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_f7a6afd4fcc64f50b1abe4b326078021
+      - id: pair_8be1cdfb58074f89bb96214dfde90fb0
+        name: Accept
+        value: "application/json "
+        description: ""
+    authentication:
+      type: bearer
+      token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojg5ODkvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODUwNTc1NTEsImV4cCI6MTY4NTA2NDc1MSwibmJmIjoxNjg1MDU3NTUxLCJqdGkiOiJqRVlxVmtGRElieWtyMEgwIiwic3ViIjoiOTk0MTIzODEtNTIyMi00NmI2LWI5NWYtODg3N2I5ZjJmMGYzIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.rsFFsKP0Mo7id1oLWSsSzjlSkCCo51UjSgfiMGUlr4Q
+    metaSortKey: -1684846357315.375
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_564ad72bbd73498da9c03b0f0303cca2
+    parentId: wrk_5c880ebb277a48809dad40ff3243aa64
+    modified: 1685194597231
+    created: 1684967693954
+    url: http://localhost:8989/api/tasks/delete/99413fb6-8c5f-47c4-aeda-78836deb7b7f
+    name: Delete Task
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_8be1cdfb58074f89bb96214dfde90fb0
+        name: Accept
+        value: "application/json "
+        description: ""
+    authentication:
+      type: bearer
+      token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjg5ODkvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODUxOTQ1ODYsImV4cCI6MTY4NTIwMTc4NiwibmJmIjoxNjg1MTk0NTg2LCJqdGkiOiJEelRvT0ptSFl3dVZkblIyIiwic3ViIjoiOTkzZjQ5ZDAtM2E5Yi00NmRkLTg4MGYtMjM1MDNhY2RlYjlhIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.OH-TB6Egn-CIwEQMTNgcADWpwYxI6k3UTT_fpMt9MLY
+    metaSortKey: -1684831566480.4375
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_7246d65440434612989931f9dda6b2fa
+    parentId: wrk_5c880ebb277a48809dad40ff3243aa64
+    modified: 1685195044760
+    created: 1684946019206
+    url: http://localhost:8989/api/tasks
+    name: List All Tasks
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_5a9887d363884374b543be4aa4070897
+        name: Accept
+        value: application/json
+        description: ""
+    authentication:
+      type: bearer
+      token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjg5ODkvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODUxOTQ1ODYsImV4cCI6MTY4NTIwMTc4NiwibmJmIjoxNjg1MTk0NTg2LCJqdGkiOiJEelRvT0ptSFl3dVZkblIyIiwic3ViIjoiOTkzZjQ5ZDAtM2E5Yi00NmRkLTg4MGYtMjM1MDNhY2RlYjlhIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.OH-TB6Egn-CIwEQMTNgcADWpwYxI6k3UTT_fpMt9MLY
+    metaSortKey: -1684816775645.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_2c0c4a634bcd4e38bf5e2155512cc80e
+    parentId: wrk_5c880ebb277a48809dad40ff3243aa64
+    modified: 1685201057437
+    created: 1685043467244
+    url: http://localhost:8989/api/tasks/9944a21b-7856-4168-b21e-aa27778089f1
+    name: Get Task By Uuid
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_5a9887d363884374b543be4aa4070897
+        name: Accept
+        value: application/json
+        description: ""
+    authentication:
+      type: bearer
+      token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjg5ODkvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODUxOTQ1ODYsImV4cCI6MTY4NTIwMTc4NiwibmJmIjoxNjg1MTk0NTg2LCJqdGkiOiJEelRvT0ptSFl3dVZkblIyIiwic3ViIjoiOTkzZjQ5ZDAtM2E5Yi00NmRkLTg4MGYtMjM1MDNhY2RlYjlhIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.OH-TB6Egn-CIwEQMTNgcADWpwYxI6k3UTT_fpMt9MLY
+    metaSortKey: -1684757612305.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_4ef2c69fac7f86667222ca3ffba89d90f2aadc8d
+    parentId: wrk_5c880ebb277a48809dad40ff3243aa64
+    modified: 1684935099238
+    created: 1684935099238
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1684935099238
+    _type: environment
+  - _id: jar_4ef2c69fac7f86667222ca3ffba89d90f2aadc8d
+    parentId: wrk_5c880ebb277a48809dad40ff3243aa64
+    modified: 1684958080786
+    created: 1684935099239
+    name: Default Jar
+    cookies:
+      - key: XSRF-TOKEN
+        value: eyJpdiI6IjNtSU9GenltVk5YVmlEMlB1K3oyUFE9PSIsInZhbHVlIjoieVB3eFBYQzZ2WlJERjAyZHcraVJ1aXdma3N3Q2ExVHdmcU9MSkxUSE5Bd1BPOC9wU0FoTFFydVluU0Yra0JpcUxqSDdzN0tUM0RuTGo2ME9UWmdpOGFFdHVWdTMvVEJzREdiQTZMTWk3Y1BlQ3owalM1dlBweGhMaFVNMElKM2UiLCJtYWMiOiJhOGFlYzY0MGQ0MmI0YTM4MjEyN2U3MTk1MTNiMjVjNmQ0NGE0ZjIxMTAyNjE0ZjA3M2Y4MzQwN2VmMjljNzhiIiwidGFnIjoiIn0%3D
+        expires: 2023-05-24T21:54:40.000Z
+        maxAge: 7200
+        domain: localhost
+        path: /
+        extensions:
+          - samesite=lax
+        hostOnly: true
+        creation: 2023-05-24T19:46:54.543Z
+        lastAccessed: 2023-05-24T19:54:40.786Z
+        id: "1752108747560508"
+      - key: laravel_session
+        value: eyJpdiI6IkNtZHFkb2lYQnAzbGxjcTF2VDJnSkE9PSIsInZhbHVlIjoiOVFlZFl0V3hDd1F6TWtMT3ZXaUlEOVMyUmlOcDVpbE5iUnhDVTRyM2pIc0tNbmhHVEFINXgzM3RrZzNJTlNoMUFhaURadDhZQkFMNmwwU29HWkRYYTd4T3lPdGtqZWtuYlRURHlJZmROdnJuMUdkcnFSakJyVmJQSEZnM1ZvR3YiLCJtYWMiOiJkY2U2MWZjNDdhZTc0YWM1ZjMxYWRhODI4MWNjNWEyNGNiMWM1ZGQ3N2IxNDNmYzYyZTJmMzY0YjlhMTk0MzMyIiwidGFnIjoiIn0%3D
+        expires: 2023-05-24T21:54:40.000Z
+        maxAge: 7200
+        domain: localhost
+        path: /
+        httpOnly: true
+        extensions:
+          - samesite=lax
+        hostOnly: true
+        creation: 2023-05-24T19:46:54.543Z
+        lastAccessed: 2023-05-24T19:54:40.786Z
+        id: "008070904093664177"
+    _type: cookie_jar
+  - _id: spc_8003c5b60efa447a90f65dd1b091f70d
+    parentId: wrk_5c880ebb277a48809dad40ff3243aa64
+    modified: 1684935099233
+    created: 1684935099233
+    fileName: My Collectionpess
+    contents: ""
+    contentType: yaml
+    _type: api_spec

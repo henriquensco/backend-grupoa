@@ -83,4 +83,6 @@ A API possui as seguintes rotas disponíveis:
 
 Certifique-se de utilizar o endpoint correto para cada rota, substituindo `{uuid}` pelo identificador único da tarefa desejada.
 
+Dentro do projeto, na pasta *Docs*, você irá encontrar uma collection para o Insomnia e uma documentação OpenApi.
+
 Espero que essas instruções sejam úteis para executar o projeto Laravel utilizando Docker!
