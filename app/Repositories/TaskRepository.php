@@ -7,6 +7,8 @@ use App\Models\Task;
 class TaskRepository
 {
     private Task $taskModel;
+
+    private string $uuid = '';
     
     public function __construct()
     {
@@ -26,6 +28,7 @@ class TaskRepository
     public function createTask($data)
     {
         $task = $this->taskModel->create($data);
+        $this->uuid = $task->uuid;
         return $task->save();
     }
 
@@ -39,6 +42,11 @@ class TaskRepository
         $task = $this->findTask($uuid);
 
         return $task ? $task->delete() : false;
+    }
+
+    public function getUuid(): string
+    {
+        return $this->uuid;
     }
 
 }

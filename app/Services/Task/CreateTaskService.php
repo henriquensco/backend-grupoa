@@ -26,6 +26,8 @@ class CreateTaskService implements AbstractInterface
                 return ['message' => 'Occurred a error when create the task', 'statusCode' => 401];
             }
 
+            $this->data->uuid = $this->taskRepository->getUuid();
+
             return ['data' => $this->data, 'statusCode' => 201];
         } catch (\Exception $error) {
             return ['message' => $error->getMessage(), 'statusCode' => 500];

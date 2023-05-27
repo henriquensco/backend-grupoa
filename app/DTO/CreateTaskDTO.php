@@ -9,6 +9,8 @@ class CreateTaskDTO
     public $title;
     public $description;
 
+    public string $uuid = '';
+
     private $error;
 
     public function __construct($request)
