@@ -35,6 +35,7 @@ class UpdateTaskService implements AbstractInterface
                 return ['message' => 'The task was not found.', 'statusCode' => 404];
             }
 
+            $this->data['statusCode'] = 200;
             return $this->data;
         } catch (\Exception $error) {
             return ['message' => $error->getMessage(), 'statusCode' => 500];
