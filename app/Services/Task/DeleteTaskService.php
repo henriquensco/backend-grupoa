@@ -25,7 +25,7 @@ class DeleteTaskService implements AbstractInterface
                 return ['message' => 'The task was not found.', 'statusCode' => 404];
             }
 
-            return ['message' => 'Task deleted'];
+            return ['message' => 'Task deleted', 'statusCode' => 200];
         } catch (\Exception $error) {
             return ['message' => $error->getMessage(), 'statusCode' => 500];
         }
